@@ -1,0 +1,35 @@
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 54px;
+  align-items: center;
+  .registration {
+    display: flex;
+    align-items: center;
+    p {
+      padding-right: 24px;
+      color: #999999;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    button {
+      background: #4e74f5;
+      border-radius: 100px;
+      width: 170px;
+      height: 51px;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 14px;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      border: none;
+    }
+  }
+}
+@media (max-width: 700px) {
+  .registration {
+    p {
+      display: none;
+    }
+  }
+}
