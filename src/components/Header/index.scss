@@ -3,6 +3,7 @@
   justify-content: space-between;
   padding: 40px 54px;
   align-items: center;
+  /*   margin-bottom: 38px; */
   .registration {
     display: flex;
     align-items: center;
@@ -22,7 +23,9 @@
       line-height: 14px;
       letter-spacing: 0.02em;
       color: #ffffff;
-      border: none;
+      &:hover {
+        background: #748feb;
+      }
     }
   }
 }
