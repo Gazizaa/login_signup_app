@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './index.scss'
 import Header from '../../components/Header'
 import FacebookLogo from '../../assets/FacebookLogo.svg'
 import GoogleLogo from '../../assets/GoogleLogo.svg'
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 const RegistrationForm = () => {
+
+    const [toNextPage, settoNextPage] = useState(false);
+    const [input, setInput] = useState(false);
 
     const MyTextInput = ({...props }) => {
         const [field, meta] = useField(props);
@@ -26,11 +29,15 @@ const RegistrationForm = () => {
                     .required('Введите имя'),
         email: Yup.string('')
                     .email('Неверный еmail')
+                    .matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+.com$", 'Возможно вы ошиблись в указании почтового сервиса')
                     .required('Введите email'),
         password: Yup.string('')
-                    .required('Введите пароль')
-                  
+                    .required('Введите пароль')              
     });
+
+    const showInput = () => {
+        setInput(true);
+    }
 
     return (
         <>
@@ -54,9 +61,11 @@ const RegistrationForm = () => {
                     name: '',
                     email: '',
                     password: '',
+                    promocode: '',
                     }}
                     validationSchema={authSchema}
                     onSubmit={(values, { setSubmitting, resetForm}) => {
+                            settoNextPage(true);
                             console.log(values);
                             setSubmitting(false);
                             resetForm(); 
@@ -81,13 +90,20 @@ const RegistrationForm = () => {
                             placeholder="Пароль"
                         />
                         <br/>
-                        <button className='forgot-password-btn'>У меня есть промокод</button>
-                        {console.log(authSchema)}
-                        {/* <Link to='/confirmemail'> */}
-                            <button type="submit" className='submit-btn' >
-                                Создать аккаунт
-                            </button>
-                        {/* </Link> */}
+                        {input ? 
+                        <MyTextInput
+                            name="promocode"
+                            type="promocode"
+                            placeholder="Промокод"
+                        />
+                        : <button className='forgot-password-btn' onClick={showInput}>У меня есть промокод</button>
+                        }
+                        {toNextPage ?
+                        <Redirect to='/confirmemail'>
+                            <button type="submit" className='submit-btn' >Создать аккаунт</button>
+                        </Redirect> 
+                        : <button type="submit" className='submit-btn' >Создать аккаунт</button>
+                        }
                         <h5>Создавая аккаунт, я согласен<button className='forgot-password-btn'>с условиями оферты</button></h5>
                     </Form>
                 </Formik>

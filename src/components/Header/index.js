@@ -5,23 +5,25 @@ import './index.scss'
 
 const Header = (props) => {
     return (
-        
         <div className='header-row'>
-            <div className='logo'>
-                <img src={logo} alt='logo' />
-            </div>
+             <Link to='/'>
+                 <div className='logo'>
+                    <img src={logo} alt='logo' />
+                </div>
+             </Link>
+            
             <div className='registration'>
-                 {props.location.pathname === '/registration' 
-                ? <p>Уже есть аккаунт?</p>
-                : <p>У вас нет аккаунта?</p>
+            {
+                (props.location.pathname === '/registration' && <p>Уже есть аккаунт?</p>) 
+                || (props.location.pathname === '/' && <p>У вас нет аккаунта?</p>)
+                || (props.location.pathname === '/confirmemail' && <p>Выйти</p>)
+                || (props.location.pathname === '/notreceiveemail' && <p>Выйти</p>)
             }
-                {props.location.pathname === '/registration' 
-                ? <Link to='/'><button>Войти</button></Link>
-                : <Link to='/registration'><button>Регистрация</button></Link>
-            }
-                
-               
-                
+            {
+                (props.location.pathname === '/registration' && <Link to='/'><button>Войти</button></Link>) 
+                || (props.location.pathname === '/' && <Link to='/registration'><button>Регистрация</button></Link>)
+                || (props.location.pathname === '/confirmemail' && '')
+            } 
             </div>
         </div>
     )

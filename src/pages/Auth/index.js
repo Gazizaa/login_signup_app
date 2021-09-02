@@ -5,6 +5,7 @@ import FacebookLogo from '../../assets/FacebookLogo.svg'
 import GoogleLogo from '../../assets/GoogleLogo.svg'
 import { Formik, Form, useField } from 'formik';
  import * as Yup from 'yup';
+ import { Link } from 'react-router-dom'
 
 const AuthForm = () => {
 
@@ -75,8 +76,11 @@ const AuthForm = () => {
                        {/*  {error ? (
                             <div className="error">Неверный еmail или пароль</div>
                             ) : ''} */}
-                         <button type="submit" className='submit-btn'>Войти в аккаунт</button>
-                         <button className='forgot-password-btn'>Забыли пароль?</button>
+                        <button type="submit" className='submit-btn'>Войти в аккаунт</button>
+                        <Link to='/forgetpassword'>
+                            <button className='forgot-password-btn'>Забыли пароль?</button>
+                        </Link>
+                         
                     </Form>
                 </Formik>
             </div> 

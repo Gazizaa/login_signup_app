@@ -1,9 +1,11 @@
 .header-row {
   display: flex;
   justify-content: space-between;
-  padding: 40px 54px;
+  padding: 30px 54px;
   align-items: center;
-  /*   margin-bottom: 38px; */
+  .logo {
+    cursor: pointer;
+  }
   .registration {
     display: flex;
     align-items: center;

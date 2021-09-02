@@ -19,6 +19,7 @@
   .auth-form {
     display: flex;
     flex-direction: column;
+    text-align: center;
     input {
       border: 1px solid #e6e6e6;
       box-sizing: border-box;
@@ -44,6 +45,10 @@
       color: #4e74f5;
       background: none;
       padding-top: 24px;
+      padding-bottom: 8px;
+      &:hover {
+        color: #748feb;
+      }
     }
     .submit-btn {
       background: #4e74f5;
