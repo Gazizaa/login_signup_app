@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: auto;
   padding-top: 160px;
   width: 689px;
+  text-align: center;
   h1 {
     font-weight: 600;
     font-size: 56px;
@@ -17,7 +19,7 @@
     color: #999999;
     padding: 16px;
     text-align: center;
-    width: 562px;
+    width: 85%;
   }
   .buttons {
     display: flex;
@@ -44,8 +46,53 @@
       color: #4e74f5;
       background: none;
       padding-top: 24px;
+      padding-bottom: 24px;
       &:hover {
         color: #748feb;
+      }
+    }
+  }
+}
+@media (max-width: 800px) {
+  .main {
+    width: 500px;
+    padding-top: 100px;
+    h1 {
+      font-size: 40px;
+    }
+    p {
+      font-size: 14px;
+      width: 70%;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .main {
+    width: 400px;
+    h1 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 14px;
+    }
+    .buttons {
+      .email-btn {
+        height: 56px;
+        width: 254px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+@media (max-width: 430px) {
+  .main {
+    width: 300px;
+    h1 {
+      line-height: 40px;
+    }
+    .buttons {
+      .email-btn {
+        width: 200px;
       }
     }
   }

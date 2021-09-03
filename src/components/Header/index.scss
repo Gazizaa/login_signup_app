@@ -32,9 +32,33 @@
   }
 }
 @media (max-width: 700px) {
-  .registration {
-    p {
-      display: none;
+  .header-row {
+    padding: 25px 24px;
+    .registration {
+      p {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width: 450px) {
+  .header-row {
+    padding: 25px 14px;
+    .registration {
+      button {
+        width: 130px;
+        height: 42px;
+      }
+    }
+  }
+}
+@media (max-width: 310px) {
+  .header-row {
+    flex-direction: column;
+    .registration {
+      button {
+        margin-top: 15px;
+      }
     }
   }
 }

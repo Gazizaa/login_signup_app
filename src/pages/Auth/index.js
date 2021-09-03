@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './index.scss'
 import Header from '../../components/Header'
 import FacebookLogo from '../../assets/FacebookLogo.svg'
@@ -8,12 +8,14 @@ import { Formik, Form, useField } from 'formik';
  import { Link } from 'react-router-dom'
 
 const AuthForm = () => {
+    const [submitBtn, setSubmitBtn] = useState(false);
 
     const MyTextInput = ({...props }) => {
         const [field, meta] = useField(props);
         return (
             <>
-            <input className={`${meta.touched && meta.error ? "error-input text-input" : "text-input"}`} {...field} {...props} />
+            <input className={`${(meta.touched && meta.error) || submitBtn ? "error-input text-input" : "text-input"}`} 
+            {...field} {...props}  onBlur={() => setSubmitBtn(false)}/>
             {meta.touched && meta.error ? (
                 <div className="error">{meta.error}</div>
             ) : null}
@@ -24,10 +26,8 @@ const AuthForm = () => {
     const authSchema = Yup.object().shape({
         email: Yup.string('')
                     .email('Неверный еmail')
-                    .matches('example@example.com', 'Неверный еmail')
                     .required('Введите email'),
         password: Yup.string('')
-                    .matches('password2021', 'Неверный пароль')
                     .required('Введите пароль')
                   
     });
@@ -56,9 +56,16 @@ const AuthForm = () => {
                     }}
                     validationSchema={authSchema}
                     onSubmit={(values, { setSubmitting, resetForm}) => {
+                        if(values.email === 'example@example.com' && values.password === 'password2021') {
                             console.log(values);
                             setSubmitting(false);
                             resetForm(); 
+                            setSubmitBtn(false);
+                        } else {
+                            setSubmitBtn(true);
+                        }
+                                                      
+                            
                 }}
                 >
                     <Form className='auth-form' autoComplete="off">
@@ -73,9 +80,10 @@ const AuthForm = () => {
                             type="password"
                             placeholder="Пароль"
                         />
-                       {/*  {error ? (
-                            <div className="error">Неверный еmail или пароль</div>
-                            ) : ''} */}
+                        { submitBtn ? 
+                        <div className="error">Неверный email или пароль</div>
+                        : ''
+                        }
                         <button type="submit" className='submit-btn'>Войти в аккаунт</button>
                         <Link to='/forgetpassword'>
                             <button className='forgot-password-btn'>Забыли пароль?</button>

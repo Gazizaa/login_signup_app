@@ -104,7 +104,7 @@ const RegistrationForm = () => {
                         </Redirect> 
                         : <button type="submit" className='submit-btn' >Создать аккаунт</button>
                         }
-                        <h5>Создавая аккаунт, я согласен<button className='forgot-password-btn'>с условиями оферты</button></h5>
+                        <h5 className='registration-p'>Создавая аккаунт, я согласен<button className='forgot-password-btn'>с условиями оферты</button></h5>
                     </Form>
                 </Formik>
             </div> 

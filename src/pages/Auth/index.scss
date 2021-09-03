@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: auto;
   width: 496px;
+  text-align: center;
   h2 {
     font-weight: 600;
     font-size: 56px;
@@ -20,11 +22,12 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    width: 100%;
     input {
       border: 1px solid #e6e6e6;
       box-sizing: border-box;
       border-radius: 12px;
-      width: 496px;
+      width: 100%;
       height: 56px;
       padding-left: 20px;
       padding-right: 20px;
@@ -54,7 +57,7 @@
       background: #4e74f5;
       border-radius: 64px;
       height: 64px;
-      width: 496px;
+      width: 100%;
       font-weight: bold;
       font-size: 16px;
       line-height: 13px;
@@ -67,9 +70,12 @@
   }
   .auth-buttons {
     margin-top: 32px;
+    display: flex;
+    width: 100%;
+    text-align: center;
     button {
       height: 56px;
-      width: 240px;
+      width: 100%;
       border-radius: 12px;
       border: 1px solid #e6e6e6;
       box-sizing: border-box;
@@ -102,4 +108,24 @@
 }
 .error-input {
   border: 1px solid #f90043 !important;
+}
+@media (max-width: 700px) {
+  .auth-main {
+    width: 70%;
+    h2 {
+      font-size: 40px;
+    }
+    h3 {
+      font-size: 14px;
+    }
+  }
+  .auth-buttons {
+    flex-direction: column;
+    .facebook-btn {
+      margin-bottom: 10px;
+    }
+  }
+  .submit-btn {
+    font-size: 14px !important;
+  }
 }
