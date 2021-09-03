@@ -8,7 +8,7 @@ import ForgetPassword from './pages/ForgetPassword';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Route exact path='/' component={AuthForm}/>
         <Route exact path='/registration' component={RegistrationForm}/>
