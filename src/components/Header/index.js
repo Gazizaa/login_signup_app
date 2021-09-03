@@ -16,8 +16,8 @@ const Header = (props) => {
             {
                 (props.location.pathname === '/registration' && <p>Уже есть аккаунт?</p>) 
                 || (props.location.pathname === '/' && <p>У вас нет аккаунта?</p>)
-                || (props.location.pathname === '/confirmemail' && <p>Выйти</p>)
-                || (props.location.pathname === '/notreceiveemail' && <p>Выйти</p>)
+                || (props.location.pathname === '/confirmemail' && <p style={{display: "block"}}>Выйти</p>)
+                || (props.location.pathname === '/notreceiveemail' && <p style={{display: "block"}}>Выйти</p>)
             }
             {
                 (props.location.pathname === '/registration' && <Link to='/'><button>Войти</button></Link>) 
